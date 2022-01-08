@@ -1,7 +1,7 @@
 import * as actions from '../actions/questionActions'
 
 export const initialState = {
-  loading: true,
+  loading: false,
   hasErrors: false,
   questions: [],
   question: {},

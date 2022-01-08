@@ -1,0 +1,32 @@
+.answer {
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 4px;
+    padding: .7rem 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .answer-content{
+    display: inline-block;
+    padding: .4rem;
+  }
+
+  .keyboard{
+    cursor: pointer;
+    height: 35px !important;
+    width: 40px !important;
+    color:rgb(44, 40, 40);
+  }
+
+  .keyboard:hover{
+    background-color: rgb(211, 206, 206);
+    border-radius: 50%;
+    transition: background .5s;
+  }
+  .score-button{
+    min-width: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

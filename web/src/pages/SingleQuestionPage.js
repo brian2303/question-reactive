@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchQuestion } from '../actions/questionActions'
 
 import { Question } from '../components/Question'
-import { Answer } from '../components/Answer'
+import { Answer } from '../components/answer/Answer'
 import { Link } from 'react-router-dom'
 
 const SingleQuestionPage = ({
