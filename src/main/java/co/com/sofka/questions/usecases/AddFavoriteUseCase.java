@@ -2,8 +2,12 @@ package co.com.sofka.questions.usecases;
 
 import co.com.sofka.questions.model.FavoriteDTO;
 import co.com.sofka.questions.repositories.FavoriteRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+@Service
+@Validated
 public class AddFavoriteUseCase implements AddFavorite {
 
     private final FavoriteRepository favoriteRepository;

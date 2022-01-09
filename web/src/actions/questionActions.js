@@ -96,5 +96,26 @@ export function deleteQuestion(id) {
     }
 }
 
+export function addFavorite(data){
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            await fetch(`${URL_BASE}/addFavorite`,
+                {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+            )
+            dispatch(success({redirect: `/question/${data.questionId}`}));
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+}
+
 
 

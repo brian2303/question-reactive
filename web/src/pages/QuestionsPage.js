@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchQuestions } from '../actions/questionActions'
-import { Question } from '../components/question/Question'
+import  Question  from '../components/question/Question'
 
 const QuestionsPage = ({ dispatch, loading, questions, hasErrors }) => {
     useEffect(() => {

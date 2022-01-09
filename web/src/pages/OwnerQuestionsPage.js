@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 
 
 import { fetchOwnerQuestions, deleteQuestion } from '../actions/questionActions'
-import { Question } from '../components/question/Question'
+import  Question  from '../components/question/Question'
 
 const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect, userId }) => {
     useEffect(() => {

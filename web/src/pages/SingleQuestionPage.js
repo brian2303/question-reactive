@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { fetchQuestion } from '../actions/questionActions'
 
-import { Question } from '../components/question/Question'
+import  Question from '../components/question/Question'
 import Answer from '../components/answer/Answer'
 import { Link } from 'react-router-dom'
 
