@@ -13,6 +13,10 @@ public class AnswerDTO {
     @NotBlank
     private String answer;
 
+    @NotBlank
+    private String answerId;
+
+
     private Integer position;
 
 
@@ -20,20 +24,13 @@ public class AnswerDTO {
 
     }
 
-    public AnswerDTO(@NotBlank String questionId, @NotBlank String userId, @NotBlank String answer) {
-        this.userId = userId;
+    public AnswerDTO(@NotBlank String questionId,@NotBlank String answerId, @NotBlank String userId, @NotBlank String answer,Integer position) {
         this.questionId = questionId;
+        this.answerId = answerId;
+        this.userId = userId;
         this.answer = answer;
-    }
-
-    public Integer getPosition() {
-        return Optional.ofNullable(position).orElse(1);
-    }
-
-    public void setPosition(Integer position) {
         this.position = position;
     }
-
 
     public String getUserId() {
         return userId;
@@ -59,25 +56,19 @@ public class AnswerDTO {
         this.answer = answer;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AnswerDTO answerDTO = (AnswerDTO) o;
-        return Objects.equals(userId, answerDTO.userId);
+    public String getAnswerId() {
+        return answerId;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId);
+    public void setAnswerId(String answerId) {
+        this.answerId = answerId;
     }
 
-    @Override
-    public String toString() {
-        return "AnswerDTO{" +
-                "userId='" + userId + '\'' +
-                ", questionId='" + questionId + '\'' +
-                ", answer='" + answer + '\'' +
-                '}';
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 }

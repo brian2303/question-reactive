@@ -1,11 +1,14 @@
 package co.com.sofka.questions.usecases;
 
 import co.com.sofka.questions.collections.Answer;
+import co.com.sofka.questions.collections.AnswerPositionUser;
 import co.com.sofka.questions.collections.Question;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.QuestionDTO;
+import co.com.sofka.questions.model.AnswerPositionUserDTO;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.function.Function;
 
 @Component
@@ -47,9 +50,34 @@ public class MapperUtils {
 
     public Function<Answer, AnswerDTO> mapEntityToAnswer() {
         return entity -> new AnswerDTO(
+                entity.getQuestionId(),
                 entity.getId(),
                 entity.getUserId(),
-                entity.getAnswer()
+                entity.getAnswer(),
+                entity.getPosition()
         );
     }
+
+    public Function<AnswerPositionUserDTO, AnswerPositionUser> mapAnswerPositionUserDTOToEntity(String id) {
+        return answerPositionUserDTO -> {
+            var answerPosition = new AnswerPositionUser();
+            answerPosition.setId(id);
+            answerPosition.setQuestionId(answerPositionUserDTO.getQuestionId());
+            answerPosition.setUserId(answerPositionUserDTO.getUserId());
+            answerPosition.setAnswerId(answerPositionUserDTO.getAnswerId());
+            answerPosition.setAction(answerPositionUserDTO.getAction());
+            answerPosition.setAnswerPositionDate(LocalDateTime.now());
+            return answerPosition;
+        };
+    }
+
+    public Function<AnswerPositionUser, AnswerPositionUserDTO> mapEntityToAnswerPositionUserDTO() {
+        return entity -> new AnswerPositionUserDTO(
+                entity.getAnswerId(),
+                entity.getAction(),
+                entity.getQuestionId(),
+                entity.getUserId()
+        );
+    }
+
 }

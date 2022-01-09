@@ -117,3 +117,25 @@ export function postAnswer(answer) {
     }
 }
 
+export function postUpdatePostionAnswer(updatePosition) {
+    return async dispatch => {
+        dispatch(loading())
+        try{
+            const response = await fetch(`${URL_BASE}/updatePosition`,
+                {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatePosition)
+                }
+            )
+            const answerPositionUser = await response.json();
+            dispatch(success({redirect: `/question/${answerPositionUser.questionId}`}));
+        }catch (error) {
+            dispatch(failure())
+        }
+    }
+}
+

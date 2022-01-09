@@ -1,6 +1,5 @@
 package co.com.sofka.questions.routers;
 
-import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.usecases.*;
 import org.springframework.context.annotation.Bean;
@@ -67,17 +66,7 @@ public class QuestionRouter {
         );
     }
 
-    @Bean
-    public RouterFunction<ServerResponse> addAnswer(AddAnswerUseCase addAnswerUseCase) {
-        return route(POST("/add").and(accept(MediaType.APPLICATION_JSON)),
-                request -> request.bodyToMono(AnswerDTO.class)
-                        .flatMap(addAnswerDTO -> addAnswerUseCase.apply(addAnswerDTO)
-                                .flatMap(result -> ServerResponse.ok()
-                                        .contentType(MediaType.APPLICATION_JSON)
-                                        .bodyValue(result))
-                        )
-        );
-    }
+
 
     @Bean
     public RouterFunction<ServerResponse> delete(DeleteUseCase deleteUseCase) {
