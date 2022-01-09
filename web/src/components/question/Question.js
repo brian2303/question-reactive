@@ -9,7 +9,7 @@ export const Question = ({ question, excerpt, onDelete }) => (
     <div className='container-question-title'>
       <h2>{question.question}</h2>
       <div className='container-favorites'>
-        <p><b>Añadir a favoritos</b></p> 
+        <p className='text-favorite'><b>star</b></p> 
         <StarOutlineIcon />
       </div> 
     </div>

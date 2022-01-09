@@ -5,7 +5,23 @@
 }
 
 .container-favorites{
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 5px;
+    border: 1px solid #ea3546;
+    min-width: 70px;
+    border-radius: 4px;
+}
+
+.container-favorites:hover{
+    background: #ea3546;
+    color: white;
+    transition: all .3s;
+    border: 1px solid black;
+}
+
+.text-favorite{
+    margin: 0;
 }
