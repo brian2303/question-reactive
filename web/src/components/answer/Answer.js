@@ -10,7 +10,6 @@ import { postUpdatePostionAnswer } from '../../actions/questionActions';
 const Answer = ({ answer,dispatch,userId }) => {
   
   const handleClick = (action) => {
-    console.log(answer)
     const data = {
       userId : answer.userId,
       answerId : answer.answerId,
