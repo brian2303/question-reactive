@@ -13,7 +13,7 @@ const QuestionsPage = ({ dispatch, loading, questions, hasErrors }) => {
         if (loading) return <p>Loading questions...</p>
         if (hasErrors) return <p>Unable to display questions.</p>
 
-        return questions.map(question => <Question key={question.id} question={question} excerpt />)
+        return questions.map(question => <Question key={question.id} showFavorite={false} question={question} excerpt />)
     }
 
     return (

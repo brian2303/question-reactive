@@ -15,6 +15,18 @@
     border-radius: 4px;
 }
 
+.container-favorites-added{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+    border: 1px solid #2c2a2a;
+    background-color: rgb(68, 68, 68);
+    color: rgb(245, 241, 235);
+    min-width: 70px;
+    border-radius: 4px;
+}
+
 .container-favorites:hover{
     background: #ea3546;
     color: white;
