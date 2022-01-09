@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import {  fetchQuestion } from '../actions/questionActions'
 import {  postAnswer } from '../actions/answerActions'
 import { connect } from 'react-redux'
-import { Question } from '../components/Question'
+import { Question } from '../components/question/Question'
 
 const FormPage = ({ dispatch, loading, redirect, match,hasErrors, question, userId }) => {
     const { register, handleSubmit } = useForm();

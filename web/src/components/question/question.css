@@ -1,0 +1,11 @@
+.container-question-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-favorites{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
