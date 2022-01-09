@@ -18,6 +18,7 @@ import QuestionFormPage from './pages/QuestionFormPage'
 import AnswerFormPage from './pages/AnswerFormPage'
 import OwnerQuestionsPage from './pages/OwnerQuestionsPage'
 import { useAuthState } from "react-firebase-hooks/auth";
+import FavoritesFormPage from './pages/FavoritesFormPage';
 
 firebase.initializeApp({
   apiKey: "AIzaSyBAxX4iehzXerzfUuzk4xx-wiY_AYKrWFo",
@@ -51,6 +52,7 @@ const App = ({ dispatch }) => {
             <Route exact path="/list" component={OwnerQuestionsPage} />
             <Route exact path="/answer/:id" component={AnswerFormPage} />
             <Route exact path="/new" component={QuestionFormPage} />
+            <Route exact path="/favorites" component={FavoritesFormPage} />
             <Redirect to="/" />
           </Switch>
         </> :
