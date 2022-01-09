@@ -13,6 +13,7 @@ const FormPage = ({ dispatch, loading, redirect, match,hasErrors, question, user
     const onSubmit = data => {
         data.userId =  userId;
         data.questionId = id;
+        data.position = 0;
         dispatch(postAnswer(data));
     };
 

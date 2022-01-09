@@ -13,7 +13,6 @@ public class AnswerDTO {
     @NotBlank
     private String answer;
 
-    @NotBlank
     private String answerId;
 
 
@@ -24,7 +23,7 @@ public class AnswerDTO {
 
     }
 
-    public AnswerDTO(@NotBlank String questionId,@NotBlank String answerId, @NotBlank String userId, @NotBlank String answer,Integer position) {
+    public AnswerDTO(@NotBlank String questionId,String answerId, @NotBlank String userId, @NotBlank String answer,Integer position) {
         this.questionId = questionId;
         this.answerId = answerId;
         this.userId = userId;

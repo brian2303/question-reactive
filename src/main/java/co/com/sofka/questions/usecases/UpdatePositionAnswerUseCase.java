@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
 import java.util.function.BiFunction;
 
 @Service
@@ -47,7 +48,7 @@ public class UpdatePositionAnswerUseCase implements UpdatePositionAnswer{
                         .filter(ansPositionDTO -> ansPositionDTO.getAction().equalsIgnoreCase(SUM))
                         .flatMap(answerPositionUserDTO1 -> answerRepository.findById(answerPositionUserDTO1.getAnswerId()))
                         .flatMap(answer -> {
-                            answer.setPosition(answer.getPosition() + 1);
+                            answer.setPosition(answer.getPosition()  + 1);
                             return answerRepository.save(answer)
                                     .flatMap(ans -> answerPositionUserRepository.save(mapperUtils.mapAnswerPositionUserDTOToEntity(null).apply(answerPositionUserDTO)))
                                     .map(mapperUtils.mapEntityToAnswerPositionUserDTO());
@@ -75,17 +76,18 @@ public class UpdatePositionAnswerUseCase implements UpdatePositionAnswer{
 
     private void evaluateUpdateAnswer(AnswerPositionUserDTO lastAnswerPositionUser, AnswerPositionUserDTO currentlyAnswerPositionUser, Answer lastAnswer,Answer currentlyAnswer){
         if (lastAnswerPositionUser.getAnswerId().equalsIgnoreCase(currentlyAnswerPositionUser.getAnswerId())){
-            if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase(SUM) && lastAnswerPositionUser.getAction().equalsIgnoreCase(SUM)){
-                return;
-            }
-            if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase("rest") && lastAnswerPositionUser.getAction().equalsIgnoreCase("rest")){
+            if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase(lastAnswerPositionUser.getAction())){
                 return;
             }
             if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase("rest")){
                 currentlyAnswer.setPosition(currentlyAnswer.getPosition() - 1);
+                lastAnswer.setPosition(lastAnswer.getPosition() - 1);
+                return;
             }
             if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase(SUM)){
                 currentlyAnswer.setPosition(currentlyAnswer.getPosition() + 1);
+                lastAnswer.setPosition(lastAnswer.getPosition() + 1);
+                return;
             }
         }
 
