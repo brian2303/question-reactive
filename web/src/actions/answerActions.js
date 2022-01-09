@@ -55,3 +55,23 @@ export function postUpdatePositionAnswer(updatePosition) {
         }
     }
 }
+
+export function deleteAnswer(AnswerId,questionId) {
+    return async dispatch => {
+        dispatch(loading())
+        try{
+            await fetch(`${URL_BASE}/deleteAnswer/${AnswerId}`,
+                {
+                    method: 'DELETE',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+            dispatch(success({redirect: `/question/${questionId}`}));
+        }catch (error) {
+            dispatch(failure())
+        }
+    }
+}
