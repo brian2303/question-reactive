@@ -2,8 +2,10 @@ package co.com.sofka.questions.usecases;
 
 import co.com.sofka.questions.collections.Answer;
 import co.com.sofka.questions.collections.AnswerPositionUser;
+import co.com.sofka.questions.collections.Favorite;
 import co.com.sofka.questions.collections.Question;
 import co.com.sofka.questions.model.AnswerDTO;
+import co.com.sofka.questions.model.FavoriteDTO;
 import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.model.AnswerPositionUserDTO;
 import org.springframework.stereotype.Component;
@@ -48,6 +50,17 @@ public class MapperUtils {
         );
     }
 
+    public Function<Question, QuestionDTO> mapEntityToQuestionWithoutStarred() {
+        return entity -> new QuestionDTO(
+                entity.getId(),
+                entity.getUserId(),
+                entity.getQuestion(),
+                entity.getType(),
+                entity.getCategory(),
+                Boolean.FALSE
+        );
+    }
+
     public Function<Answer, AnswerDTO> mapEntityToAnswer() {
         return entity -> new AnswerDTO(
                 entity.getQuestionId(),
@@ -79,5 +92,25 @@ public class MapperUtils {
                 entity.getUserId()
         );
     }
+
+    public Function<FavoriteDTO, Favorite> mapFavoriteToEntity(String id) {
+        return favoriteDTO -> {
+            var favorite = new Favorite();
+            favorite.setId(id);
+            favorite.setQuestion(favoriteDTO.getQuestion());
+            favorite.setUserId(favoriteDTO.getUserId());
+            favorite.setQuestionId(favoriteDTO.getQuestionId());
+            return favorite;
+        };
+    }
+
+    public Function<Favorite, FavoriteDTO> mapEntityToFavorite() {
+        return entity -> new FavoriteDTO(
+                entity.getUserId(),
+                entity.getQuestionId(),
+                entity.getQuestion()
+        );
+    }
+
 
 }

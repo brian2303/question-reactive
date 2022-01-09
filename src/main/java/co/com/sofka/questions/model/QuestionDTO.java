@@ -17,6 +17,9 @@ public class QuestionDTO {
     private String type;
     @NotBlank
     private String category;
+
+    private Boolean favorite;
+
     private List<AnswerDTO> answers;
 
 
@@ -39,9 +42,26 @@ public class QuestionDTO {
         this.category = category;
     }
 
+    public QuestionDTO(String id, String userId, String question, String type, String category, Boolean favorite) {
+        this.id = id;
+        this.userId = userId;
+        this.question = question;
+        this.type = type;
+        this.category = category;
+        this.favorite = favorite;
+    }
+
     public List<AnswerDTO> getAnswers() {
         this.answers = Optional.ofNullable(answers).orElse(new ArrayList<>());
         return answers;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 
     public void setAnswers(List<AnswerDTO> answers) {

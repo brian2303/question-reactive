@@ -22,7 +22,7 @@ public class ListUseCase implements Supplier<Flux<QuestionDTO>> {
     @Override
     public Flux<QuestionDTO> get() {
         return questionRepository.findAll()
-                .map(mapperUtils.mapEntityToQuestion());
+                .map(mapperUtils.mapEntityToQuestionWithoutStarred());
     }
 
 }
