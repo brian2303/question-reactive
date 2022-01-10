@@ -18,7 +18,7 @@ const SingleQuestionPage = ({
 }) => {
   const { id } = match.params
   useEffect(() => {
-    dispatch(fetchQuestion(id))
+    dispatch(fetchQuestion(id,userId))
   }, [dispatch, id,redirect])
 
   const renderQuestion = () => {

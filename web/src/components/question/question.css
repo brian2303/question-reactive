@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: space-around;
     padding: 5px;
-    border: 1px solid #ea3546;
+    border: 1px solid #777474;
     min-width: 70px;
     border-radius: 4px;
 }
@@ -21,14 +21,14 @@
     justify-content: space-around;
     padding: 5px;
     border: 1px solid #2c2a2a;
-    background-color: rgb(68, 68, 68);
-    color: rgb(245, 241, 235);
+    background: #424041;
+    color: white;
     min-width: 70px;
     border-radius: 4px;
 }
 
 .container-favorites:hover{
-    background: #ea3546;
+    background: #424041;
     color: white;
     transition: all .3s;
     border: 1px solid black;

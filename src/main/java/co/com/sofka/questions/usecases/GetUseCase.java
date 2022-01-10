@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import static reactor.core.publisher.Mono.zip;
@@ -18,7 +19,7 @@ import static reactor.core.publisher.Mono.just;
 
 @Service
 @Validated
-public class GetUseCase implements Function<String, Mono<QuestionDTO>> {
+public class GetUseCase implements BiFunction<String,String, Mono<QuestionDTO>> {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
     private final FavoriteRepository favoriteRepository;
@@ -32,12 +33,12 @@ public class GetUseCase implements Function<String, Mono<QuestionDTO>> {
     }
 
     @Override
-    public Mono<QuestionDTO> apply(String id) {
+    public Mono<QuestionDTO> apply(String id,String userId) {
         Objects.requireNonNull(id, "Id is required");
         return questionRepository.findById(id)
                 .map(mapperUtils.mapEntityToQuestion())
                 .flatMap(mapQuestionAggregate())
-                .flatMap(questionDTO -> zip(just(questionDTO),just(favoriteRepository.findAllByUserId(questionDTO.getUserId()))))
+                .flatMap(questionDTO -> zip(just(questionDTO),just(favoriteRepository.findAllByUserId(userId))))
                 .flatMap(questionFluxFavorite -> zip(Mono.just(questionFluxFavorite.getT1()),questionFluxFavorite.getT2().collectList()))
                 .filter(questionListFavorite -> questionListFavorite.getT2().stream().anyMatch(
                         favorite -> favorite.getQuestionId().equalsIgnoreCase(questionListFavorite.getT1().getId()))

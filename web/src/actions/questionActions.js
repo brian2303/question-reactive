@@ -41,11 +41,11 @@ export function fetchOwnerQuestions(userId) {
     }
 }
 
-export function fetchQuestion(id) {
+export function fetchQuestion(id,userId) {
     return async dispatch => {
         dispatch(loading())
         try {
-            const response = await fetch(`${URL_BASE}/get/${id}`)
+            const response = await fetch(`${URL_BASE}/get/${id}/${userId}`)
             const data = await response.json()
             dispatch(success({ question: data, redirect: null }))
         } catch (error) {

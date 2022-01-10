@@ -21,12 +21,12 @@ const Question = ({ dispatch, question, excerpt, onDelete,showFavorite,userId })
     <article className={excerpt ? 'question-excerpt' : 'question'}>
       <div className='container-question-title'>
         <h2>{question.question}</h2>
-        {question.favorite ? 
+        {question.favorite && userId ? 
           <div className='container-favorites' onClick={handleClick}>
             <p className='text-favorite'><b>add favorites</b></p>
             <StarOutlineIcon />
           </div> : showFavorite && userId ? 
-          <div className='container-favorites-added' onClick={handleClick}>
+          <div className='container-favorites-added'>
             <p className='text-favorite'><b>Added</b></p>
             <StarIcon /> 
           </div> :null}

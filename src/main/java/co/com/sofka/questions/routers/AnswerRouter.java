@@ -21,9 +21,9 @@ public class AnswerRouter {
 
     @Bean
     public RouterFunction<ServerResponse> addAnswer(AddAnswerUseCase addAnswerUseCase) {
-        return route(POST("/add").and(accept(MediaType.APPLICATION_JSON)),
+        return route(POST("/add/{userId}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(AnswerDTO.class)
-                        .flatMap(addAnswerDTO -> addAnswerUseCase.apply(addAnswerDTO)
+                        .flatMap(addAnswerDTO -> addAnswerUseCase.apply(addAnswerDTO,request.pathVariable("userId"))
                                 .flatMap(result -> ServerResponse.ok()
                                         .contentType(MediaType.APPLICATION_JSON)
                                         .bodyValue(result))

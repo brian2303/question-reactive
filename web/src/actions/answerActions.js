@@ -17,7 +17,7 @@ export function postAnswer(answer) {
     return async dispatch => {
         dispatch(loading())
         try {
-            await fetch(`${URL_BASE}/add`,
+            await fetch(`${URL_BASE}/add/${answer.userId}`,
                 {
                     method: 'POST',
                     mode: 'cors',

@@ -69,11 +69,12 @@ public class QuestionRouter {
     @Bean
     public RouterFunction<ServerResponse> get(GetUseCase getUseCase) {
         return route(
-                GET("/get/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                GET("/get/{id}/{userId}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(getUseCase.apply(
-                                        request.pathVariable("id")),
+                                        request.pathVariable("id"),
+                                        request.pathVariable("userId")),
                                 QuestionDTO.class
                         ))
         );
