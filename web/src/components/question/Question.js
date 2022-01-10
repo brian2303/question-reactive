@@ -12,7 +12,7 @@ const Question = ({ dispatch, question, excerpt, onDelete,showFavorite,userId })
     const data = {
       questionId: question.id,
       question : question.question,
-      userId: question.userId
+      userId
     }
     dispatch(addFavorite(data))
   }

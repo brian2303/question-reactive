@@ -11,8 +11,9 @@ body {
   
   nav {
     display: flex;
-    padding: 2rem 0;
-    background: #111;
+    align-items: center;
+    padding: 1rem 0;
+    background: rgb(48, 46, 46);
   }
   
   nav section {
@@ -31,10 +32,11 @@ body {
   
   nav a:hover {
     background: #222;
+    transition: background 1s;
   }
   
   a {
-    color: #ea3546;
+    color: #ffffff;
     text-decoration: none;
   }
   
@@ -42,7 +44,6 @@ body {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 1.5rem;
   }
   
   section h1 {
@@ -88,14 +89,48 @@ body {
   
   .button {
     display: inline-block;
-    background: #ea3546;
+    background: #424041;
     color: white;
     border-radius: 4px;
     font-weight: 700;
     padding: 0.75rem 1.5rem;
+    cursor: pointer;
   }
 
   .right {
     float: right;
   }
   
+
+  .container-fav{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .button-rm-fav{
+    height: 35px;
+    background: #424041;
+    color: white;
+    font-weight: 700;
+    border: 1px solid black;
+    width: 100px;
+    cursor: pointer;
+  }
+
+  .logo{
+    position: absolute;
+    left: 35px;
+    width: 35px;
+    height: 35px;
+    background: white;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    align-items: center;
+  }

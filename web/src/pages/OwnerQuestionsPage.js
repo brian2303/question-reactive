@@ -31,8 +31,6 @@ const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect,
                 swal("Tu pregunta ha sido eliminada exitosamente", {
                     icon: "success",
                 });
-            } else {
-              swal("Your imaginary file is safe!");
             }
           });
     }
@@ -50,7 +48,7 @@ const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect,
 
     return (
         <section>
-            <h1>Questions</h1>
+            <h1>My questions</h1>
             {renderQuestions()}
         </section>
     )

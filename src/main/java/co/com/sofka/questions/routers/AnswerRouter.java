@@ -44,8 +44,7 @@ public class AnswerRouter {
 
     @Bean
     public RouterFunction<ServerResponse> deleteAnswer(DeleteAnswerUseCase deleteUseCase) {
-        return route(
-                DELETE("/deleteAnswer/{id}").and(accept(MediaType.APPLICATION_JSON)),
+        return route(DELETE("/deleteAnswer/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.accepted()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(deleteUseCase.apply(request.pathVariable("id")), Void.class))

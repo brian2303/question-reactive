@@ -106,6 +106,7 @@ public class MapperUtils {
 
     public Function<Favorite, FavoriteDTO> mapEntityToFavorite() {
         return entity -> new FavoriteDTO(
+                entity.getId(),
                 entity.getUserId(),
                 entity.getQuestionId(),
                 entity.getQuestion()

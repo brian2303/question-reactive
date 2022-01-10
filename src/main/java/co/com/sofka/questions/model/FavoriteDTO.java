@@ -4,6 +4,8 @@ import javax.validation.constraints.NotBlank;
 
 public class FavoriteDTO {
 
+    private String id;
+
     @NotBlank
     private String userId;
     @NotBlank
@@ -11,10 +13,19 @@ public class FavoriteDTO {
     @NotBlank
     private String question;
 
-    public FavoriteDTO(String userId, String questionId, String question) {
+    public FavoriteDTO(String id, String userId, String questionId, String question) {
+        this.id = id;
         this.userId = userId;
         this.questionId = questionId;
         this.question = question;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUserId() {
