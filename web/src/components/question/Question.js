@@ -6,7 +6,7 @@ import './question.css'
 import { connect } from 'react-redux';
 import { addFavorite } from '../../actions/questionActions';
 
-const Question = ({ dispatch, question, excerpt, onDelete,showFavorite }) => {
+const Question = ({ dispatch, question, excerpt, onDelete,showFavorite,userId }) => {
 
   const handleClick = () => {
     const data = {
@@ -25,7 +25,7 @@ const Question = ({ dispatch, question, excerpt, onDelete,showFavorite }) => {
           <div className='container-favorites' onClick={handleClick}>
             <p className='text-favorite'><b>add favorites</b></p>
             <StarOutlineIcon />
-          </div> : showFavorite ? 
+          </div> : showFavorite && userId ? 
           <div className='container-favorites-added' onClick={handleClick}>
             <p className='text-favorite'><b>Added</b></p>
             <StarIcon /> 

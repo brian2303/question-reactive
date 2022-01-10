@@ -1,5 +1,6 @@
 package co.com.sofka.questions.usecases;
 
+import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.repositories.AnswerRepository;
 import co.com.sofka.questions.repositories.FavoriteRepository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -59,7 +61,7 @@ public class GetUseCase implements Function<String, Mono<QuestionDTO>> {
                                 .map(mapperUtils.mapEntityToAnswer())
                                 .collectList()
                                 .map(answerList -> {
-                                    answerList.sort((o1, o2) -> o1.getPosition() + o2.getPosition());
+                                    answerList.sort(Comparator.comparing(AnswerDTO::getPosition).reversed());
                                     return answerList;
                                 }),
                         (question,answers) -> {
