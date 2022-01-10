@@ -29,7 +29,7 @@ const Answer = ({ answer,dispatch,userId }) => {
   
   const handleClick = (action) => {
     const data = {
-      userId : answer.userId,
+      userId,
       answerId : answer.answerId,
       questionId: answer.questionId,
       action
