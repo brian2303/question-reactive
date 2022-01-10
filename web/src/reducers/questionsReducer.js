@@ -4,6 +4,7 @@ export const initialState = {
   loading: false,
   hasErrors: false,
   questions: [],
+  favorites: [],
   question: {},
   redirect: null
 }

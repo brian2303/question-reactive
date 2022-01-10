@@ -52,7 +52,7 @@ const App = ({ dispatch }) => {
             <Route exact path="/list" component={OwnerQuestionsPage} />
             <Route exact path="/answer/:id" component={AnswerFormPage} />
             <Route exact path="/new" component={QuestionFormPage} />
-            <Route exact path="/favorites/:id" component={FavoritesFormPage} />
+            <Route exact path="/favorites" component={FavoritesFormPage} />
             <Redirect to="/" />
           </Switch>
         </> :

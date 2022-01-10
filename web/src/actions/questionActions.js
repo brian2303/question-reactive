@@ -117,5 +117,18 @@ export function addFavorite(data){
     }
 }
 
+export function getFavoritesUser(userId) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            const response = await fetch(`${URL_BASE}/getFavorites/${userId}`)
+            const data = await response.json()
+            dispatch(success({ favorites: data, redirect: null }))
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+}
+
 
 
