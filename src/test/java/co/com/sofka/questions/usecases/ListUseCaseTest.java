@@ -31,7 +31,7 @@ class ListUseCaseTest {
         question.setType("tech");
         question.setCategory("software");
         question.setQuestion("¿Que es java?");
-        when(repository.findAll()).thenReturn(Flux.just(question ));
+        when(repository.findAll()).thenReturn(Flux.just(question));
 
         StepVerifier.create(listUseCase.get())
                 .expectNextMatches(questionDTO -> {
@@ -39,6 +39,7 @@ class ListUseCaseTest {
                     assert questionDTO.getCategory().equals("software");
                     assert questionDTO.getQuestion().equals("¿Que es java?");
                     assert questionDTO.getType().equals("tech");
+                    assert questionDTO.getFavorite().equals(Boolean.FALSE);
                     return true;
                 })
                 .verifyComplete();

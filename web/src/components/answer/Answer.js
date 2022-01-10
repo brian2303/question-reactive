@@ -25,7 +25,7 @@ const Answer = ({ answer,dispatch,userId }) => {
             });
         }
       });
-}
+    }
   
   const handleClick = (action) => {
     const data = {

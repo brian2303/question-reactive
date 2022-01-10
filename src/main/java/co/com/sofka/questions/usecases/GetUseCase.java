@@ -39,7 +39,7 @@ public class GetUseCase implements BiFunction<String,String, Mono<QuestionDTO>> 
                 .map(mapperUtils.mapEntityToQuestion())
                 .flatMap(mapQuestionAggregate())
                 .flatMap(questionDTO -> zip(just(questionDTO),just(favoriteRepository.findAllByUserId(userId))))
-                .flatMap(questionFluxFavorite -> zip(Mono.just(questionFluxFavorite.getT1()),questionFluxFavorite.getT2().collectList()))
+                .flatMap(questionFluxFavorite -> zip(just(questionFluxFavorite.getT1()),questionFluxFavorite.getT2().collectList()))
                 .filter(questionListFavorite -> questionListFavorite.getT2().stream().anyMatch(
                         favorite -> favorite.getQuestionId().equalsIgnoreCase(questionListFavorite.getT1().getId()))
                 ).map(questionListFavorite -> {
