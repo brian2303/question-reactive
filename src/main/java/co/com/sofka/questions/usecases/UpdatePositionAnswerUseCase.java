@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
 
-import java.util.List;
+
 import java.util.function.BiFunction;
 
 @Service
@@ -21,7 +21,7 @@ public class UpdatePositionAnswerUseCase implements UpdatePositionAnswer{
     private final AnswerPositionUserRepository answerPositionUserRepository;
     private final MapperUtils mapperUtils;
     private static final String SUM = "sum";
-    private static final String REST = "rest";
+    private static final String SUBTRACT = "rest";
 
     public UpdatePositionAnswerUseCase(AnswerRepository answerRepository, AnswerPositionUserRepository answerPositionUserRepository, MapperUtils mapperUtils) {
         this.answerRepository = answerRepository;
@@ -81,7 +81,7 @@ public class UpdatePositionAnswerUseCase implements UpdatePositionAnswer{
             if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase(lastAnswerPositionUser.getAction())){
                 return;
             }
-            if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase(REST)){
+            if (currentlyAnswerPositionUser.getAction().equalsIgnoreCase(SUBTRACT)){
                 currentlyAnswer.setPosition(currentlyAnswer.getPosition() - 1);
                 lastAnswer.setPosition(lastAnswer.getPosition() - 1);
                 return;
@@ -93,7 +93,7 @@ public class UpdatePositionAnswerUseCase implements UpdatePositionAnswer{
             }
         }
 
-        if(lastAnswerPositionUser.getAction().equalsIgnoreCase(REST) && currentlyAnswerPositionUser.getAction().equalsIgnoreCase(REST)){
+        if(lastAnswerPositionUser.getAction().equalsIgnoreCase(SUBTRACT) && currentlyAnswerPositionUser.getAction().equalsIgnoreCase(SUBTRACT)){
             lastAnswer.setPosition(lastAnswer.getPosition() + 1);
             currentlyAnswer.setPosition(currentlyAnswer.getPosition() - 1);
         }
@@ -101,11 +101,11 @@ public class UpdatePositionAnswerUseCase implements UpdatePositionAnswer{
             lastAnswer.setPosition(lastAnswer.getPosition() - 1);
             currentlyAnswer.setPosition(currentlyAnswer.getPosition() + 1);
         }
-        if (lastAnswerPositionUser.getAction().equalsIgnoreCase(SUM) && currentlyAnswerPositionUser.getAction().equalsIgnoreCase(REST)){
+        if (lastAnswerPositionUser.getAction().equalsIgnoreCase(SUM) && currentlyAnswerPositionUser.getAction().equalsIgnoreCase(SUBTRACT)){
             lastAnswer.setPosition(lastAnswer.getPosition() - 1);
             currentlyAnswer.setPosition(currentlyAnswer.getPosition() - 1);
         }
-        if (lastAnswerPositionUser.getAction().equalsIgnoreCase(REST) && currentlyAnswerPositionUser.getAction().equalsIgnoreCase(SUM)){
+        if (lastAnswerPositionUser.getAction().equalsIgnoreCase(SUBTRACT) && currentlyAnswerPositionUser.getAction().equalsIgnoreCase(SUM)){
             lastAnswer.setPosition(lastAnswer.getPosition() + 1);
             currentlyAnswer.setPosition(currentlyAnswer.getPosition() + 1);
         }
